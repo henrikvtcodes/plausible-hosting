@@ -7,7 +7,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /traefik.yml:/etc/traefik/traefik.yml:ro
+      - $PWD/traefik.yml:/etc/traefik/traefik.yml
 
   plausible:
     labels:
@@ -16,3 +16,7 @@ services:
       traefik.http.routers.plausible.tls.certResolver: "primary"
       traefik.http.routers.plausible.entrypoints: "websecure"
       traefik.http.services.plausible.loadbalancer.server.port: "8000"
+
+configs:
+  traefikYml:
+    file: ./traefik.yml
